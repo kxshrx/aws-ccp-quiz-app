@@ -2,9 +2,10 @@
 
 A comprehensive practice quiz application for the AWS Certified Cloud Practitioner certification exam.
 
-![React](https://img.shields.io/badge/React-18-blue?style=flat-square&logo=react)
-![Vite](https://img.shields.io/badge/Vite-5-purple?style=flat-square&logo=vite)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3-cyan?style=flat-square&logo=tailwindcss)
+![AWS CCP Quiz App](https://img.shields.io/badge/AWS-CCP%20Quiz-orange?style=for-the-badge&logo=amazon-aws)
+![React](https://img.shields.io/badge/React-18-blue?style=for-the-badge&logo=react)
+![Vite](https://img.shields.io/badge/Vite-5-purple?style=for-the-badge&logo=vite)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3-cyan?style=for-the-badge&logo=tailwindcss)
 
 ## Features
 
