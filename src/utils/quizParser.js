@@ -80,13 +80,6 @@ export function parseMarkdownQuestions(markdownContent, filename = 'unknown') {
   // Validate that each question has at least one correct answer
   const validQuestions = questions.filter(q => q.options.some(opt => opt.isCorrect));
   
-  if (filename !== 'unknown') {
-    console.log(`📊 ${filename}: Parsed ${questions.length} questions, ${validQuestions.length} have correct answers`);
-    if (questions.length !== validQuestions.length) {
-      console.warn(`⚠️ ${filename}: ${questions.length - validQuestions.length} questions without correct answers`);
-    }
-  }
-  
   return validQuestions;
 }
 
@@ -105,73 +98,21 @@ export async function loadQuizData() {
   
   const allQuestions = [];
   const quizData = {};
-  const loadingResults = {
-    successful: [],
-    failed: [],
-    empty: []
-  };
-  
-  console.log(`🚀 Starting to load ${quizFiles.length} quiz files...`);
-  console.log(`📁 Files to load:`, quizFiles);
-  
-  // Test if we can access the quiz-data directory at all
-  try {
-    const testResponse = await fetch('/quiz-data/');
-    console.log(`📂 Directory access test:`, testResponse.status, testResponse.statusText);
-  } catch (error) {
-    console.warn(`📂 Directory access failed:`, error);
-  }
   
   for (const file of quizFiles) {
-    console.log(`🔄 Attempting to load: ${file}`);
     try {
       const response = await fetch(`/quiz-data/${file}`);
-      console.log(`📡 Response for ${file}:`, response.status, response.ok);
       if (response.ok) {
         const content = await response.text();
         const questions = parseMarkdownQuestions(content, file);
-        
         if (questions.length > 0) {
           quizData[file] = questions;
           allQuestions.push(...questions);
-          loadingResults.successful.push({ file, questionCount: questions.length });
-          console.log(`✅ ${file}: ${questions.length} questions loaded`);
-        } else {
-          loadingResults.empty.push(file);
-          console.warn(`⚠️ ${file}: File loaded but no valid questions extracted`);
         }
-      } else {
-        loadingResults.failed.push({ file, reason: `HTTP ${response.status}: ${response.statusText}` });
-        console.error(`❌ ${file}: Failed to fetch - ${response.status} ${response.statusText}`);
       }
     } catch (error) {
-      loadingResults.failed.push({ file, reason: error.message });
-      console.error(`❌ ${file}: Exception during loading -`, error);
+      console.error(`Failed to load ${file}:`, error);
     }
-  }
-  
-  // Summary report
-  console.log(`\n📋 LOADING SUMMARY:`);
-  console.log(`✅ Successfully loaded: ${loadingResults.successful.length} files`);
-  console.log(`⚠️ Empty files: ${loadingResults.empty.length} files`);
-  console.log(`❌ Failed to load: ${loadingResults.failed.length} files`);
-  console.log(`📊 Total questions: ${allQuestions.length}`);
-  console.log(`📝 Quiz files available in dropdown: ${Object.keys(quizData).length}`);
-  
-  if (loadingResults.failed.length > 0) {
-    console.group('Failed files details:');
-    loadingResults.failed.forEach(({ file, reason }) => {
-      console.log(`- ${file}: ${reason}`);
-    });
-    console.groupEnd();
-  }
-  
-  if (loadingResults.empty.length > 0) {
-    console.group('Empty files:');
-    loadingResults.empty.forEach(file => {
-      console.log(`- ${file}`);
-    });
-    console.groupEnd();
   }
   
   return { allQuestions, quizData };
