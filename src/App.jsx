@@ -68,20 +68,17 @@ function App() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-primary/10 via-base-100 to-secondary/10 flex items-center justify-center">
-        <div className="card bg-base-100 shadow-2xl">
-          <div className="card-body text-center">
-            <div className="avatar placeholder mb-4">
-              <div className="bg-primary text-primary-content rounded-full w-16">
-                <span className="text-2xl">⚡</span>
-              </div>
+      <div className="min-h-screen bg-gradient-to-br from-palette-cream via-palette-warm-white to-palette-light-blue flex items-center justify-center">
+        <div className="bg-white rounded-3xl shadow-2xl p-12 border-2 border-palette-cream">
+          <div className="text-center">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-palette-blue rounded-3xl mb-6">
+              <svg className="w-8 h-8 text-white animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
             </div>
-            <span className="loading loading-spinner loading-lg text-primary mb-4"></span>
-            <h2 className="text-2xl font-bold mb-2">Loading Quiz Data</h2>
-            <p className="text-base-content/70">Preparing your AWS practice questions...</p>
-            <div className="mt-4">
-              <progress className="progress progress-primary w-full"></progress>
-            </div>
+            <h2 className="text-2xl font-bold text-palette-charcoal mb-2">Loading Quiz</h2>
+            <p className="text-palette-navy">Preparing your AWS practice questions...</p>
           </div>
         </div>
       </div>
