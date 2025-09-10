@@ -1,0 +1,58 @@
+{
+  "name": "aws-ccp-quiz-app",
+  "version": "1.0.0",
+  "description": "A comprehensive practice quiz application for the AWS Certified Cloud Practitioner certification exam",
+  "author": "AWS CCP Quiz App",
+  "license": "MIT",
+  "homepage": "https://github.com/yourusername/aws-ccp-quiz-app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/aws-ccp-quiz-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/aws-ccp-quiz-app/issues"
+  },
+  "keywords": [
+    "aws",
+    "cloud-practitioner",
+    "certification",
+    "quiz",
+    "practice-exam",
+    "react",
+    "vite",
+    "tailwindcss",
+    "education"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "classnames": "^2.5.1",
+    "daisyui": "^5.1.10",
+    "marked": "^16.2.1",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^5.0.0",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.33.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.3.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "vite": "^7.1.2"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}
